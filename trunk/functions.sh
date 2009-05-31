@@ -4,7 +4,7 @@
 # Written by Louwrentius.
 #
 
-BSFL_VERSION=1.01
+BSFL_VERSION=1.02
 
 DEBUG=0
 
@@ -58,6 +58,10 @@ function display_status () {
             ;;
     PASSED | passed ) 
             STATUS=" PASSED "  
+            STATUS_COLOUR="$GREEN"
+            ;;
+    SUCCESS | SUCCESS ) 
+            STATUS=" SUCCESS "  
             STATUS_COLOUR="$GREEN"
             ;;
     

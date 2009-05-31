@@ -1,0 +1,52 @@
+#Functions Functions provided by BSFL
+
+= Introduction =
+
+This wiki page will be updated with information about which functions are provided and how to use them.
+
+= Details =
+
+== Status Codes ==
+
+OK
+SUCCESS
+ERROR
+FAILURE
+FAILED
+WARNING
+INFO
+NOTICE
+
+== Variables == 
+
+LOGFILE (override this variable in your script to specify your own logfile name.)
+
+== Functions ==
+
+=== log ===
+
+Usage: 
+
+{{{
+log <program> <type> <message>
+}}}
+
+Program: function-name or command of which the output is logged.
+Type: status code.
+Message: arbitrary text.
+
+=== exec_cmd ===
+
+Description:
+
+This function executes a command and evaluates the exit-status. If an error occurs, this is logged on-screen and to a log file. 
+
+Usage:
+
+{{{
+exec_cmd <some command>
+
+e.g.
+
+exec_cmd "ls -al"
+}}}

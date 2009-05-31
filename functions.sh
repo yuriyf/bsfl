@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# Bash Shell Function Library
+# Written by Louwrentius.
+#
+
+BSFL_VERSION=1.01
 
 DEBUG=0
 

@@ -8,14 +8,14 @@ This wiki page will be updated with information about which functions are provid
 
 == Status Codes ==
 
-  OK
-  SUCCESS
-  ERROR
-  FAILURE
-  FAILED
-  WARNING
-  INFO
-  NOTICE
+  * OK
+  * SUCCESS
+  * ERROR
+  * FAILURE
+  * FAILED
+  * WARNING
+  * INFO
+  * NOTICE
 
 == Variables == 
 
@@ -31,9 +31,9 @@ Usage:
 log <program> <type> <message>
 }}}
 
-  Program: function-name or command of which the output is logged.
-  Type: status code.
-  Message: arbitrary text.
+  * Program: function-name or command of which the output is logged.
+  * Type: status code.
+  * Message: arbitrary text.
 
 === exec_cmd ===
 

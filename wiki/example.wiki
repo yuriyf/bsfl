@@ -1,4 +1,4 @@
-#Example-exmple scipt using BSFL.
+#summary - example scipt using BSFL.
 
 = Introduction =
 

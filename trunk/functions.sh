@@ -20,6 +20,9 @@ BLUE="tput setaf 4"
 BOLD="tput bold"
 DEFAULT="tput sgr0"
 
+# Declare some vars
+START_WATCH=0
+
 function log () {
 
 
@@ -53,11 +56,11 @@ function display_status () {
     case $STATUS in 
 
     OK | ok ) 
-            STATUS="   OK   "  
+            STATUS="   OK    "  
             STATUS_COLOUR="$GREEN"
             ;;
     PASSED | passed ) 
-            STATUS=" PASSED "  
+            STATUS=" PASSED  "  
             STATUS_COLOUR="$GREEN"
             ;;
     SUCCESS | SUCCESS ) 
@@ -65,16 +68,16 @@ function display_status () {
             STATUS_COLOUR="$GREEN"
             ;;
     
-    FAILED | failed | ERROR | error)
-            STATUS=" FAILED "  
+    FAILURE | failure | FAILED | failed | ERROR | error)
+            STATUS=" FAILURE "  
             STATUS_COLOUR="$RED"
             ;;
     INFO | info | NOTICE | notice)
-            STATUS="  INFO  "  
+            STATUS=" NOTICE  "  
             STATUS_COLOUR="$BLUE"
             ;;
     WARNING | warning)
-            STATUS="  WARN  "  
+            STATUS=" WARNING "  
             STATUS_COLOUR="$YELLOW"
             ;;
     esac
@@ -133,3 +136,27 @@ function exec_cmd () {
         echo "$RESULT"
     fi
 }
+
+function start_watch () {
+
+    START_WATCH="$(date +%s)"
+}
+
+function stop_watch () {
+
+    STOP="$(date +%s)"
+    START="$START_WATCH"
+
+    ELAPSED="$(expr $STOP - $START)"
+
+    REMAINDER="$(expr $ELAPSED % 3600)"
+    HOURS="$(expr $(expr $ELAPSED - $REMAINDER) / 3600)"
+
+    SECS="$(expr $REMAINDER % 60)"
+    MINS="$(expr $(expr $REMAINDER - $SECS) / 60)"
+
+    echo "Elapsed time (h:m:s): $HOURS:$MINS:$SECS"
+}
+
+
+

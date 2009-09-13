@@ -27,7 +27,7 @@ function log () {
 
 
     NAME="$1"   # Name of the application or function. 
-    TYPE="$2"   # FATAL ERROR WARNING NOTICE DEBUG.
+    TYPE="$2"   # FATAL ERROR WARNING NOTICE INFO DEBUG.
     MSG="$3"    # The actual log message. 
 
     DATE=`date +"$LOGDATEFORMAT"`
@@ -35,10 +35,12 @@ function log () {
     LOGMESSAGE="$DATE - $NAME [$TYPE]: $MSG"
     echo "$LOGMESSAGE" >> $LOGFILE
 
-    if [ "$DEBUG" == "1" ]
+    if [ "$TYPE" == "ERROR" ] || [ "$TYPE" == "WARN" ] || [ "$DEBUG" == 1 ]
     then
-        echo "$LOGMESSAGE"
+        echo -e "$LOGMESSAGE"
     fi
+
+
 }
 
 function display_status () {
@@ -76,7 +78,7 @@ function display_status () {
             STATUS=" NOTICE  "  
             STATUS_COLOUR="$BLUE"
             ;;
-    WARNING | warning)
+    WARNING | warning | WARN )
             STATUS=" WARNING "  
             STATUS_COLOUR="$YELLOW"
             ;;
@@ -158,5 +160,42 @@ function stop_watch () {
     echo "Elapsed time (h:m:s): $HOURS:$MINS:$SECS"
 }
 
+function exists () {
+
+    ITEM="$1"
+
+    if [ -e "$ITEM" ]
+    then
+        if [ -d "$ITEM" ]
+        then
+            log exists INFO "Directory $ITEM exists."
+            return 0
+        elif [ -f "$ITEM" ]
+        then
+            log exists INFO "File $ITEM exists."
+            return 0
+        else
+            log exists INFO "Filesystem object exists."
+            return 0
+        fi
+    else
+        log exists ERROR "The file or directory $ITEM does not exist!"
+        return 1
+    fi
+}
+
+function isset () {
+
+    VAR=$1
+    VALUE=$(eval "echo \$$VAR")
+    if [ -z "$VALUE" ]
+    then
+        log isset INFO "Var $VAR is not set."
+        return 1
+    else
+        log isset INFO "Var $VAR is set to $VALUE."
+        return 0
+    fi
+}
 
 

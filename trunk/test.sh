@@ -6,11 +6,12 @@
 
 DEBUG=0
 
-LOGFILE=flups.txt
+LOGFILE=log.txt
 
 log FUNCTIONNAME ERROR "ERROR MESSAGE like this example."
 
 
+start_watch 
 echo ""
 echo "Display an OK status...."
 display_status OK
@@ -36,7 +37,21 @@ exec_cmd "ls -al"
 echo "Using the exec_cmd function to execute a command that fails...."
 exec_cmd "ls -al doesnotexist"
 
-start_watch 
-sleep 2
-stop_watch  
 
+echo "Checking if non-existing file exists..."
+exists blabla
+check_status $?
+echo "Checking if existing file exists...."
+exists /etc/passwd
+check_status $?
+
+A="123"
+
+echo "Testing if variable A is set (it is)...."
+isset A
+check_status "$?"
+echo "Testing if variable B is set (it is not)...."
+isset B
+check_status "$?"
+
+stop_watch  

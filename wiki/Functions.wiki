@@ -50,3 +50,11 @@ e.g.
 
 exec_cmd "ls -al"
 }}}
+
+=== isset ===
+
+This function checks if a variable is empty (unset) or not. If so, it returns 1, if set, it returns 0. Great for checking command-line arguments. 
+
+=== exists ===
+
+This function checks if the supplied file or directory actually exists. Great for checking command-line arguments. 

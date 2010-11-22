@@ -1,46 +1,84 @@
 #!/bin/bash
-#
+# ###########################
 # Bash Shell Function Library
-# Written by Louwrentius.
+# ###########################
+#
+# Author: Louwrentius <louwrentius@gmail.com>
+#
+# Copyright © 2010
+#
+# Released under the curren GPL version.
+#
+# Description:
+#
+# This is a shell script library. It contains functions that can be called by
+# programs that include (source) this library. 
+#
+# By simply sourcing this library, you can use all available functions as 
+# documented on the projects page.
+#
 #
 
-BSFL_VERSION=1.03
+BSFL_VERSION=1.10
 
-DEBUG=0
+DEBUG=0   # Debug mode shows more verbose output to screen and log files.
 
 # Logging.
-LOGDATEFORMAT="%b %e %H:%M:%S"
-LOGFILE=log.txt
+LOGDATEFORMAT="%b %e %Y %H:%M:%S"
+LOGFILE=$0.log
 
 # Use colours in output.
 RED="tput setaf 1"
 GREEN="tput setaf 2"
 YELLOW="tput setaf 3"
 BLUE="tput setaf 4"
+MAGENTA="tput setaf 5"
+CYAN="tput setaf 6"
 BOLD="tput bold"
 DEFAULT="tput sgr0"
+
+RED_BG="tput setab 1"
+GREEN_BG="tput setab 2"
+YELLOW_BG="tput setab 3"
+BLUE_BG="tput setab 4"
+MAGENTA_BG="tput setab 5"
+CYAN_BG="tput setab 6"
 
 # Declare some vars
 START_WATCH=0
 
-function log () {
+show_usage () {
+    
+    echo "Usage: $0 <paramters>"
+    echo
+    echo "this is a dummy function. Add an identical function to your own program."
+    echo 
+    exit 1
+}
 
-    NAME="$1"   # Name of the application or function. 
+log () {
+
+    MSG="$1"    # The actual log message. 
     TYPE="$2"   # FATAL ERROR WARNING NOTICE INFO DEBUG.
-    MSG="$3"    # The actual log message. 
 
     DATE=`date +"$LOGDATEFORMAT"`
 
-    LOGMESSAGE="$DATE - $NAME [$TYPE]: $MSG"
+    if [ -z "$TYPE" ]
+    then
+        TYPE="    -    "
+    fi
+
+    LOGMESSAGE="$DATE - [$TYPE]: $MSG"
+
     echo "$LOGMESSAGE" >> $LOGFILE
 
-    if [ "$TYPE" == "ERROR" ] || [ "$TYPE" == "WARN" ] || [ "$DEBUG" == 1 ]
+    if [ "$DEBUG" = "1" ]
     then
         echo -e "$LOGMESSAGE"
     fi
 }
 
-function display_status () {
+display_status () {
 
 
     function position_cursor () {
@@ -92,25 +130,72 @@ function display_status () {
  
 }
 
-function check_status () {
+check_status () {
 
-    ERROR="$1"
+    ERROR="$?"
+
+    MSG_OK="$1"
+    MSG_FAIL="$2"
+
     if [ "$ERROR" == "0" ]
     then
+        if [ ! -z "$MSG_OK" ]
+        then
+            echo "$MSG_OK"
+        fi
         display_status OK
         return 0
     else
-        display_status ERROR
+        if [ ! -z "$MSG_FAIL" ]
+        then
+            echo "$MSG_FAIL"
+        fi
+        display_status FAILLURE
         return 1
     fi
 }
 
-function exec_cmd () {
+msg () {
+
+    if [ -z "$1" ]
+    then
+        return 1
+    fi
+
+    MSG="* $1"
+    STATUS="$2"
+    COLOUR="$3"
+
+    $DEFAULT
+    $COLOUR
+    echo "$MSG"
+    $DEFAULT
+    
+    if  [ ! -z "$STATUS" ]
+    then 
+        display_status "$STATUS"
+    fi
+
+    log "$MSG" "$STATUS"
+}
+
+bail () {
+
+    ERROR="$?"
+    MSG="$1"
+    if [ ! "$ERROR" = "0" ]
+    then
+        echo "$MSG"
+        exit 1
+    fi
+}
+
+exec_cmd () {
 
     CMD="$1"
 
     RESULT=$($CMD 2>&1 )
-    check_status $?
+    check_status
     ERROR=$?
 
     if [ "$ERROR" == "0" ]
@@ -123,10 +208,10 @@ function exec_cmd () {
         fi
          
         TYPE=NOTICE
-        log "$CMD" $TYPE "$MESSAGE"
+        log "$MESSAGE" $TYPE
     else
         TYPE=ERROR
-        log "$CMD" $TYPE "$RESULT"
+        log "$RESULT" $TYPE
     fi
 
 
@@ -136,12 +221,12 @@ function exec_cmd () {
     fi
 }
 
-function start_watch () {
+start_watch () {
 
     START_WATCH="$(date +%s)"
 }
 
-function stop_watch () {
+stop_watch () {
 
     STOP="$(date +%s)"
     START="$START_WATCH"
@@ -157,7 +242,7 @@ function stop_watch () {
     echo "Elapsed time (h:m:s): $HOURS:$MINS:$SECS"
 }
 
-function exists () {
+exists () {
 
     ITEM="$1"
 
@@ -165,32 +250,32 @@ function exists () {
     then
         if [ -d "$ITEM" ]
         then
-            log exists INFO "Directory $ITEM exists."
+            log "Directory $ITEM exists." INFO
             return 0
         elif [ -f "$ITEM" ]
         then
-            log exists INFO "File $ITEM exists."
+            log "File $ITEM exists." INFO
             return 0
         else
-            log exists INFO "Filesystem object exists."
+            log "Filesystem object exists." INFO
             return 0
         fi
     else
-        log exists ERROR "The file or directory $ITEM does not exist!"
+        log "The file or directory $ITEM does not exist!" ERROR
         return 1
     fi
 }
 
-function isset () {
+isset () {
 
     VAR=$1
     VALUE=$(eval "echo \$$VAR")
     if [ -z "$VALUE" ]
     then
-        log isset INFO "Var $VAR is not set."
+        log "Var $VAR is not set." INFO
         return 1
     else
-        log isset INFO "Var $VAR is set to $VALUE."
+        log "Var $VAR is set to $VALUE." INFO
         return 0
     fi
 }

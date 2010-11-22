@@ -4,7 +4,7 @@
 # Written by Louwrentius.
 #
 
-BSFL_VERSION=1.02
+BSFL_VERSION=1.03
 
 DEBUG=0
 
@@ -25,7 +25,6 @@ START_WATCH=0
 
 function log () {
 
-
     NAME="$1"   # Name of the application or function. 
     TYPE="$2"   # FATAL ERROR WARNING NOTICE INFO DEBUG.
     MSG="$3"    # The actual log message. 
@@ -39,8 +38,6 @@ function log () {
     then
         echo -e "$LOGMESSAGE"
     fi
-
-
 }
 
 function display_status () {
@@ -197,5 +194,6 @@ function isset () {
         return 0
     fi
 }
+
 
 

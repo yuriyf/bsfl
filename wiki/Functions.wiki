@@ -17,6 +17,28 @@ This wiki page will be updated with information about which functions are provid
   * INFO
   * NOTICE
 
+== Colour Codes ==
+
+=== Foreground colours ===
+
+  * BLUE
+  * RED
+  * YELLOW
+  * GREEN
+  * CYAN
+  * MAGENTA
+  * BOLD
+  * DEFAULT
+
+=== Background colours ===
+
+  * BLUE_BG
+  * RED_BG
+  * YELLOW_BG
+  * GREEN_BG
+  * CYAN_BG
+  * MAGENTA_BG
+
 == Variables == 
 
 LOGFILE (override this variable in your script to specify your own logfile name.)

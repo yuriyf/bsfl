@@ -64,6 +64,8 @@ msg "A message with a different background" "$BLUE_BG" OK
 msg "A message with failed status in yellow" "$YELLOW" FAILURE
 }}}
 
+http://members.multiweb.nl/nan1/img/bsfl02.png
+
 === log ===
 
 Usage: 

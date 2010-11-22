@@ -60,6 +60,8 @@ msg "This is just a test message in green." "$GREEN" OK
 msg "Another message in red with no status." "$RED"
 msg "A message with the default colour." 
 msg "A message with the default colour and status" "" WARNING
+msg "A message with a different background" "$BLUE_BG" OK
+msg "A message with failed status in yellow" "$YELLOW" FAILURE
 }}}
 
 === log ===

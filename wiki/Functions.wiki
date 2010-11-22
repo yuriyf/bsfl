@@ -55,14 +55,14 @@ The function msg displays a message with the desired markup. The function has th
 
 Example:
 
-{{
+{{{
 msg "This is just a test message in green." "$GREEN" OK
 or
 msg "Another message in red with no status." "$RED"
 or
 msg "A message with the default colour." 
 
-}}
+}}}
 
 === log ===
 

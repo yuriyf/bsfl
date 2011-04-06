@@ -8,7 +8,7 @@ This wiki page will be updated with information about which functions are provid
 
 
 = Overview of functions = 
-|| Function ||  Description || 
+|| *Function* ||  *Description* || 
 || msg || Displays a message on the screen and logs it || 
 || log || Logs a message to a log file || 
 || defined || Tests if a variable is defined || 

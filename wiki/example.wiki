@@ -1,11 +1,6 @@
 #summary - example script using BSFL.
 
-= Introduction =
-
-Add your content here.
-
-
-= Details =
+= Example script =
 
 {{{
 #!/bin/bash

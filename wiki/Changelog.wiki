@@ -1,0 +1,7 @@
+#summary Changelog
+#labels Featured
+
+= 2.00-beta-2 =
+  * Added all syslog-style error codes like Emergency, info, warning etc. 
+  * Imroved positioning of status codes.
+  * improved status logging of commands.

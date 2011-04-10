@@ -8,6 +8,9 @@ This wiki page will be updated with information about which functions are provid
 
 
 = Overview of functions = 
+
+== Regular fuctions == 
+
 || *Function* ||  *Description* || 
 || msg || Displays a message on the screen and logs it || 
 || log || Logs a message to a log file || 
@@ -20,17 +23,29 @@ This wiki page will be updated with information about which functions are provid
 || str_replace || Replaces a string with a string with a string ||
 || str_replace_in_file || Replaces a string within a file ||
 
+== Message functions == 
+
+All these functions are shortcuts to display a message with a specific 'status'.
+ 
+  msg_emergency 
+  msg_alert
+  msg_critical
+  msg_error
+  msg_warning
+  msg_notice
+  msg_info
+  msg_debug
+  msg_ok
+  msg_not_ok
+  msg_fail
+  msg_success
+ msg_passed
+
 = Details =
 
 == Status Codes ==
 
-  * OK
-  * NOT OK
-  * PASSED
-  * SUCCESS
-  * FAILED
-  * WARN
-  * NOTICE
+
 
 == Colour Codes ==
 

@@ -1,5 +1,21 @@
 #summary - example script using BSFL.
 
+= Downloading and installing Nmap = 
+
+{{{
+#!/bin/bash
+
+. ./bsfl
+
+cmd "wget -q http://nmap.org/dist/nmap-5.51.tar.bz2"
+cmd "tar xjf nmap-5.51.tar.bz2"
+cd "nmap-5.51"
+cmd "./configure"
+cmd "make -j 3"
+cmd "make install"
+
+}}}
+
 = Example script =
 
 {{{

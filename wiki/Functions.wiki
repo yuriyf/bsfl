@@ -27,6 +27,7 @@ This wiki page will be updated with information about which functions are provid
 
 All these functions are shortcuts to display a message with a specific 'status'.
  
+{{{
   msg_emergency 
   msg_alert
   msg_critical
@@ -39,8 +40,8 @@ All these functions are shortcuts to display a message with a specific 'status'.
   msg_not_ok
   msg_fail
   msg_success
- msg_passed
-
+  msg_passed
+}}}
 = Details =
 
 == Status Codes ==

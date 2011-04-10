@@ -110,7 +110,7 @@ This function logs a message (text) to a log file and/or to syslog. The log file
 Usage: 
 
 {{{
-log <message>
+log [message]
 }}}
 
  
@@ -123,25 +123,25 @@ This function executes a command and evaluates the exit-status. If an error occu
 Usage:
 
 {{{
-cmd <some command>
+cmd [some command]
 
 e.g.
 
 cmd "ls -al"
 }}}
 
-=== defined <variable> ===
+=== defined [variable] ===
 
 This function checks if a variable is set or not. If so, it returns 1, if set, it returns 0. Great for checking command-line arguments. 
 
-=== has_value <variable> ===
+=== has_value [variable] ===
 
 A variable may be defined but not assigned a value. It is similar to the -z option of an if-statement.
 
-=== directory_exists <directory> ===
+=== directory_exists [directory] ===
 
 Does the specified directory exist?
 
-=== file_exists <file> ===
+=== file_exists [file] ===
 
 This function checks if the supplied file actually exists. Returns 0 if the file is found, otherwise, it returns 1.

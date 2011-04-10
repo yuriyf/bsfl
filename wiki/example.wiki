@@ -16,6 +16,10 @@ cmd "make install"
 
 }}}
 
+The output will look like this:
+
+http://louwrentius.com/images/bsfl04.png
+
 = Example script =
 
 {{{

@@ -20,6 +20,8 @@ This wiki page will be updated with information about which functions are provid
 || file_exists || Tests if a file exists  || 
 || now || returns the current time in seconds since epoch. ||
 || elapsed || returns the difference between two time stamps in seconds ||
+|| start_watch || Sets the start time. Usefull for timing scripts ||
+|| stop_watch || Returns the time passed in seconds since 'start_time'. Usefull for timing scripts.||
 || str_replace || Replaces a string with a string with a string ||
 || str_replace_in_file || Replaces a string within a file ||
 
@@ -145,3 +147,8 @@ Does the specified directory exist?
 === file_exists (file) ===
 
 This function checks if the supplied file actually exists. Returns 0 if the file is found, otherwise, it returns 1.
+
+=== now ===
+
+This function returns the time in seconds since epoch. 
+

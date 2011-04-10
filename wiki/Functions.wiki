@@ -26,6 +26,10 @@ This wiki page will be updated with information about which functions are provid
 == Message functions == 
 
 All these functions are shortcuts to display a message with a specific 'status'.
+
+These functions tage one argument, a string between double quotes like:
+
+msg_ok "This is ok."
  
 {{{
   msg_emergency 
@@ -42,6 +46,9 @@ All these functions are shortcuts to display a message with a specific 'status'.
   msg_success
   msg_passed
 }}}
+
+http://louwrentius.com/images/bsfl02.png
+
 = Details =
 
 == Status Codes ==

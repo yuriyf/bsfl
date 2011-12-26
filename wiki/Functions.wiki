@@ -92,8 +92,8 @@ SYSLOG_ENABLED - enables logging to syslog, is independent of logging to a file.
 
 The function msg displays a message with the desired markup. The function has three arguments:
 
-# The message (mandatory)
-# The colour of the message  (optional)
+  # The message (mandatory)
+  # The colour of the message  (optional)
 
 Example:
 
@@ -151,4 +151,3 @@ This function checks if the supplied file actually exists. Returns 0 if the file
 === now ===
 
 This function returns the time in seconds since epoch. 
-

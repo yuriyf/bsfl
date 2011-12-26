@@ -1,16 +1,6 @@
 #!/bin/bash
 
-test () {
+ARRAY="$1"
 
-    A="$1"
-    B="$2"
-    echo "$A + $B "
-}
-
-echo "hoi"
-ls
-find ./  > /dev/null
-set
-ls
-test $_ $?
+echo "${ARRAY[@]}"
 
